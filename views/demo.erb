@@ -1,15 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Rack & Rail Grid System - TDD Implementation</title>
-  <link href="/css/main.css" rel="stylesheet">
-  <link href="/css/pages/home.css" rel="stylesheet">
-  <link href="/css/components/demo.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
+<%
+  @title = "PSP-layout Demo: Rack & Rail system"
+  @page_css = ["/css/components/demo.css"]
+  @body_class = "debug"
+%>
 
 <nav class="nav-menu py-4 mb-8">
   <div class="container mx-auto">
@@ -34,10 +27,6 @@
   </div>
 </nav>
 
-<div class="viewport-info-panel" id="viewport-info-panel">
-  <div class="info-header">Current Viewport</div>
-  <div class="info-content" id="breakpoint-indicator">Loading...</div>
-</div>
 
 
 <div class="page-wrapper">
@@ -48,7 +37,7 @@
     <li><strong>Rail</strong>: Flexbox container with fixed-width columns and horizontal scrolling</li>
   </ul>
   
-  <div class="demo-section">
+  <div>
     <h2>Key Features</h2>
     <ul>
       <li>✅ <strong>Tailwind v4 CSS-First</strong>: Uses modern <code>@theme</code> and <code>@utility</code> syntax</li>
@@ -59,7 +48,7 @@
   </div>
 </div>
 
-<section class="demo-section">
+<section>
   <div class="page-wrapper">
     <h2>Interactive Column Width Demo</h2>
     <p>Toggle between Rack (CSS Grid) and Rail (Flexbox) containers to see how columns behave differently.</p>
@@ -77,7 +66,7 @@
 
   <div id="demo-container" class="rack">
     <% (1..12).each do |i| %>
-      <div class="demo-column col-<%= i %>">
+      <div class="col-<%= i %>">
         <strong>col-<%= i %></strong>
         <div class="measurement-info" id="col-<%= i %>-info">Loading...</div>
       </div>
@@ -112,7 +101,7 @@
 
 </section>
 
-<section class="demo-section">
+<section>
   <div class="page-wrapper">
     <h2>Responsive Behavior</h2>
     <p>The rack system automatically adapts to different viewports:</p>
@@ -124,134 +113,124 @@
   </div>
 
   <div class="rack">
-    <div class="demo-column col-2">
+    <div class="col-2">
       <strong>col-2</strong>
       <div class="measurement-info" id="responsive-col-2-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-8">
+    <div class="col-8">
       <strong>col-8</strong>
       <div class="measurement-info" id="responsive-col-8-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-2">
+    <div class="col-2">
       <strong>col-2</strong>
       <div class="measurement-info" id="responsive-col-2-info-2">Loading...</div>
     </div>
-    <div class="demo-column col-12">
+    <div class="col-12">
       <strong>col-12</strong>
       <div class="measurement-info" id="responsive-col-12-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-6">
+    <div class="col-6">
       <strong>col-6</strong>
       <div class="measurement-info" id="responsive-col-6-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-6">
+    <div class="col-6">
       <strong>col-6</strong>
       <div class="measurement-info" id="responsive-col-6-info-2">Loading...</div>
     </div>
-    <div class="demo-column col-4">
+    <div class="col-4">
       <strong>col-4</strong>
       <div class="measurement-info" id="responsive-col-4-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-4">
+    <div class="col-4">
       <strong>col-4</strong>
       <div class="measurement-info" id="responsive-col-4-info-2">Loading...</div>
     </div>
-    <div class="demo-column col-4">
+    <div class="col-4">
       <strong>col-4</strong>
       <div class="measurement-info" id="responsive-col-4-info-3">Loading...</div>
     </div>
-  </div>
-
-  <div class="page-wrapper">
-    <h3>MD Breakpoint: 7-Column System Examples</h3>
-    <p>In MD viewport (768px+), these combinations fit perfectly in 3 rows within the 7-column grid:</p>
-  </div>
-
-  <div class="rack">
-    <div class="demo-column col-1">
+    <div class="col-1">
       <strong>col-1</strong>
       <div class="measurement-info" id="responsive-col-1-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-6">
+    <div class="col-6">
       <strong>col-6</strong>
       <div class="measurement-info" id="responsive-col-6-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-5">
+    <div class="col-5">
       <strong>col-5</strong>
       <div class="measurement-info" id="responsive-col-5-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-2">
+    <div class="col-2">
       <strong>col-2</strong>
       <div class="measurement-info" id="responsive-col-2-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-3">
+    <div class="col-3">
       <strong>col-3</strong>
       <div class="measurement-info" id="responsive-col-3-info-1">Loading...</div>
     </div>
-    <div class="demo-column col-4">
+    <div class="col-4">
       <strong>col-4</strong>
       <div class="measurement-info" id="responsive-col-4-info-1">Loading...</div>
     </div>
   </div>
 </section>
 
-<section class="demo-section">
+<section>
   <div class="page-wrapper">
     <h2>Perfect Offset System</h2>
-    <p>Use <code>offset-*</code> utilities to center content. Offset creates equal space on both sides:</p>
+    <p>Use <code>offset-*</code> utilities for systematic pseudo-centering. Offset creates equal padding on both sides using the formula: <code>(n × column + n × gutter) ÷ 2</code></p>
     <div class="code-block">
-      <pre>&lt;!-- Each offset should be used only once per row --&gt;
+      <pre>&lt;!-- New systematic offset approach --&gt;
 &lt;div class="rack"&gt;
-  &lt;div class="offset-3 col-6"&gt;Centered with equal spaces (3+6+3=12)&lt;/div&gt;
+  &lt;div class="offset-1 col-10"&gt;Content spans columns 1-11 with balanced padding&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;div class="rack"&gt;
-  &lt;div class="offset-2 col-8"&gt;Offset from left (2+8+2=12)&lt;/div&gt;
+  &lt;div class="offset-1 col-3"&gt;First element&lt;/div&gt;
+  &lt;div class="col-8"&gt;Second element - Total: 11 columns centered&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Systematic padding calculation --&gt;
+&lt;div class="rack"&gt;
+  &lt;div class="offset-3 col-6"&gt;3 columns + gutters worth of padding on each side&lt;/div&gt;
 &lt;/div&gt;</pre>
     </div>
   </div>
 
   <div class="offset-demo">
     <div class="rack">
-      <div class="demo-column offset-1 col-10">
+      <div class="offset-1 col-10">
         <strong>offset-1 col-10</strong>
-        <div class="measurement-info">1 + 10 + 1 = 12 ✓</div>
+        <div class="measurement-info">Spans columns 1-11 with 0.5 column padding each side</div>
       </div>
-    </div>
-    <div class="rack">
-      <div class="demo-column offset-2 col-8">
+      <div class="offset-2 col-8">
         <strong>offset-2 col-8</strong>
-        <div class="measurement-info">2 + 8 + 2 = 12 ✓</div>
+        <div class="measurement-info">Spans columns 1-9 with 1 column + gutter padding each side</div>
       </div>
-    </div>
-    <div class="rack">
-      <div class="demo-column offset-3 col-6">
+      <div class="offset-3 col-6">
         <strong>offset-3 col-6</strong>
-        <div class="measurement-info">3 + 6 + 3 = 12 ✓</div>
+        <div class="measurement-info">Spans columns 1-7 with 1.5 column + gutter padding each side</div>
       </div>
-    </div>
-    <div class="rack">
-      <div class="demo-column offset-4 col-4">
+      <div class="offset-4 col-4">
         <strong>offset-4 col-4</strong>
-        <div class="measurement-info">4 + 4 + 4 = 12 ✓</div>
+        <div class="measurement-info">Spans columns 1-5 with 2 column + gutter padding each side</div>
+      </div>
+      <div class="offset-1 col-3" style="background-color: #dcfce7;">
+        <strong>offset-1 col-3</strong>
+        <div class="measurement-info">Example test case part 1</div>
+      </div>
+      <div class="col-8" style="background-color: #fef3c7;">
+        <strong>col-8</strong>
+        <div class="measurement-info">Example test case part 2 - Total: 11 columns centered</div>
       </div>
     </div>
   </div>
 </section>
 
 <div class="page-wrapper">
-  <div class="demo-section">
+  <div>
     <h2>Technical Implementation</h2>
-    <p>This system is built with:</p>
-    <ul>
-      <li><strong>Tailwind v4:</strong> CSS-first configuration using <code>@theme</code> and <code>@utility</code></li>
-      <li><strong>CSS Grid:</strong> 12-column flexible grid for rack containers</li>
-      <li><strong>Flexbox:</strong> Fixed-width columns with horizontal scroll for rail containers</li>
-      <li><strong>CSS Custom Properties:</strong> Configurable gaps, padding, and column widths</li>
-      <li><strong>Mobile-First:</strong> Responsive breakpoints starting from sm (375px)</li>
-      <li><strong>TDD:</strong> Comprehensive test coverage with Jest and jsdom</li>
-    </ul>
-    
     <div class="code-block">
       <h4>Core CSS Structure</h4>
       <pre>@theme {
@@ -275,9 +254,6 @@
   </div>
 </div>
 
-<!-- PSP Debug Plugin Integration -->
-<link rel="stylesheet" href="/plugins/psp-debug/styles/debug-mode.css">
-<script src="/plugins/psp-debug/scripts/debug-mode.js"></script>
+<!-- PSP Layout Plugin Integration (includes debug functionality) -->
+<script src="/plugins/psp-layout/scripts/debug-mode.js"></script>
 <script src="/js/demo.js"></script>
-</body>
-</html>

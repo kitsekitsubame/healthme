@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../../plugins/psp-layout/styles/debug-mode.css";
 
 @theme {
   /* Grid System Variables */

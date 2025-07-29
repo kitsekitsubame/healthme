@@ -1,5 +1,5 @@
 /**
- * Rack & Rail Grid System Configuration v2.0.0
+ * Rack & Rail Grid System Configuration v1.0.0
  * ==============================================
  * 
  * Modern CSS Grid-based configuration for the responsive grid system.
@@ -250,7 +250,81 @@ const RAIL_GAPS = {
   }
 };
 
-// Note: OFFSETS removed - CSS Grid centering handled by grid-column-start instead
+// =============================================================================
+// OFFSETS (Systematic Padding-Based Centering)
+// =============================================================================
+
+/**
+ * Offset configuration for pseudo-centering using systematic calculations
+ * 
+ * CONCEPT:
+ * - offset-n creates equal padding on both sides using formula: (n * column + n * gutter) ÷ 2
+ * - Uses CSS custom properties and calc() for systematic scaling
+ * - Leverages existing --base-gap and grid system variables
+ * 
+ * EXAMPLES:
+ * - .offset-1 + .col-10 = content spans columns 1-11 with 0.5 column padding each side
+ * - .offset-1 + .col-3 + .col-8 = 11 columns centered with balanced spacing
+ * 
+ * SYSTEMATIC APPROACH:
+ * - No hardcoded pixel values
+ * - Scales with existing Tailwind CSS responsive system
+ * - Uses calc() with CSS custom properties for automatic viewport scaling
+ */
+const OFFSETS = {
+  sm: {
+    1: 'calc((1 * var(--offset-base) + 1 * var(--offset-gap)) / 2)',
+    2: 'calc((2 * var(--offset-base) + 2 * var(--offset-gap)) / 2)',
+    3: 'calc((3 * var(--offset-base) + 3 * var(--offset-gap)) / 2)',
+    4: 'calc((4 * var(--offset-base) + 4 * var(--offset-gap)) / 2)',
+    5: 'calc((5 * var(--offset-base) + 5 * var(--offset-gap)) / 2)',
+    6: 'calc((6 * var(--offset-base) + 6 * var(--offset-gap)) / 2)',
+    7: 'calc((7 * var(--offset-base) + 7 * var(--offset-gap)) / 2)',
+    8: 'calc((8 * var(--offset-base) + 8 * var(--offset-gap)) / 2)',
+    9: 'calc((9 * var(--offset-base) + 9 * var(--offset-gap)) / 2)',
+    10: 'calc((10 * var(--offset-base) + 10 * var(--offset-gap)) / 2)',
+    11: 'calc((11 * var(--offset-base) + 11 * var(--offset-gap)) / 2)',
+  },
+  md: {
+    1: 'calc((1 * var(--offset-base) + 1 * var(--offset-gap)) / 2)',
+    2: 'calc((2 * var(--offset-base) + 2 * var(--offset-gap)) / 2)',
+    3: 'calc((3 * var(--offset-base) + 3 * var(--offset-gap)) / 2)',
+    4: 'calc((4 * var(--offset-base) + 4 * var(--offset-gap)) / 2)',
+    5: 'calc((5 * var(--offset-base) + 5 * var(--offset-gap)) / 2)',
+    6: 'calc((6 * var(--offset-base) + 6 * var(--offset-gap)) / 2)',
+    7: 'calc((7 * var(--offset-base) + 7 * var(--offset-gap)) / 2)',
+    8: 'calc((8 * var(--offset-base) + 8 * var(--offset-gap)) / 2)',
+    9: 'calc((9 * var(--offset-base) + 9 * var(--offset-gap)) / 2)',
+    10: 'calc((10 * var(--offset-base) + 10 * var(--offset-gap)) / 2)',
+    11: 'calc((11 * var(--offset-base) + 11 * var(--offset-gap)) / 2)',
+  },
+  lg: {
+    1: 'calc((1 * var(--offset-base) + 1 * var(--offset-gap)) / 2)',
+    2: 'calc((2 * var(--offset-base) + 2 * var(--offset-gap)) / 2)',
+    3: 'calc((3 * var(--offset-base) + 3 * var(--offset-gap)) / 2)',
+    4: 'calc((4 * var(--offset-base) + 4 * var(--offset-gap)) / 2)',
+    5: 'calc((5 * var(--offset-base) + 5 * var(--offset-gap)) / 2)',
+    6: 'calc((6 * var(--offset-base) + 6 * var(--offset-gap)) / 2)',
+    7: 'calc((7 * var(--offset-base) + 7 * var(--offset-gap)) / 2)',
+    8: 'calc((8 * var(--offset-base) + 8 * var(--offset-gap)) / 2)',
+    9: 'calc((9 * var(--offset-base) + 9 * var(--offset-gap)) / 2)',
+    10: 'calc((10 * var(--offset-base) + 10 * var(--offset-gap)) / 2)',
+    11: 'calc((11 * var(--offset-base) + 11 * var(--offset-gap)) / 2)',
+  },
+  xl: {
+    1: 'calc((1 * var(--offset-base) + 1 * var(--offset-gap)) / 2)',
+    2: 'calc((2 * var(--offset-base) + 2 * var(--offset-gap)) / 2)',
+    3: 'calc((3 * var(--offset-base) + 3 * var(--offset-gap)) / 2)',
+    4: 'calc((4 * var(--offset-base) + 4 * var(--offset-gap)) / 2)',
+    5: 'calc((5 * var(--offset-base) + 5 * var(--offset-gap)) / 2)',
+    6: 'calc((6 * var(--offset-base) + 6 * var(--offset-gap)) / 2)',
+    7: 'calc((7 * var(--offset-base) + 7 * var(--offset-gap)) / 2)',
+    8: 'calc((8 * var(--offset-base) + 8 * var(--offset-gap)) / 2)',
+    9: 'calc((9 * var(--offset-base) + 9 * var(--offset-gap)) / 2)',
+    10: 'calc((10 * var(--offset-base) + 10 * var(--offset-gap)) / 2)',
+    11: 'calc((11 * var(--offset-base) + 11 * var(--offset-gap)) / 2)',
+  }
+};
 
 // =============================================================================
 // VALIDATION UTILITIES
@@ -295,5 +369,6 @@ module.exports = {
   RACK_COLUMNS,
   RAIL_COLUMNS,
   RAIL_GAPS,
+  OFFSETS,
   validateGridConfig
 }; 

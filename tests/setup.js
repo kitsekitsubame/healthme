@@ -68,6 +68,19 @@ global.testUtils = {
     return window.getComputedStyle(element).gridColumnStart;
   },
 
+  // Get padding-inline property for offset testing
+  getPaddingInline(selector) {
+    const element = document.querySelector(selector);
+    if (!element) throw new Error(`Element ${selector} not found`);
+    return window.getComputedStyle(element).paddingInline;
+  },
+
+  // Get CSS custom property value
+  getCSSCustomProperty(propertyName) {
+    const rootElement = document.documentElement;
+    return window.getComputedStyle(rootElement).getPropertyValue(propertyName);
+  },
+
   // Store mocked CSS values for multiple selectors
   _mockStyles: new Map(),
 
@@ -88,23 +101,45 @@ global.testUtils = {
     
     // Update the global getComputedStyle mock
     global.getComputedStyle.mockImplementation((element) => {
+      // Collect ALL matching properties for elements with multiple classes
+      let mergedProperties = {};
+      
       // Check all stored mock styles
       for (const [mockSelector, mockProperties] of this._mockStyles) {
+        // Handle :root selector for CSS custom properties
+        if (mockSelector === ':root' && element === document.documentElement) {
+          return {
+            ...mockProperties,
+            getPropertyValue: (property) => mockProperties[property] || ''
+          };
+        }
+        
         // Handle class-based selectors
         if (mockSelector.startsWith('.')) {
           const className = mockSelector.substring(1);
           if (element.classList && element.classList.contains(className)) {
-            return mockProperties;
+            // Merge properties instead of returning immediately
+            mergedProperties = { ...mergedProperties, ...mockProperties };
           }
         }
         
         // Handle element.matches() for complex selectors
         if (element.matches && element.matches(mockSelector)) {
-          return mockProperties;
+          mergedProperties = { ...mergedProperties, ...mockProperties };
         }
       }
       
-      return {};
+      // Return merged properties or default
+      if (Object.keys(mergedProperties).length > 0) {
+        return {
+          ...mergedProperties,
+          getPropertyValue: (property) => mergedProperties[property] || ''
+        };
+      }
+      
+      return {
+        getPropertyValue: () => ''
+      };
     });
   },
 

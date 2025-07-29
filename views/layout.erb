@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= @title || "PSP-env: Layout System" %></title>
+  
+  <!-- Core CSS - Always loaded -->
   <link rel="stylesheet" href="/css/main.css">
-  <title>Sinatra App</title>
+  
+  <!-- Page-specific CSS -->
+  <% if @page_css %>
+    <% @page_css.each do |css_file| %>
+      <link href="<%= css_file %>" rel="stylesheet">
+    <% end %>
+  <% end %>
+  
+  <!-- External resources -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
-<body>
+<body<%= " class=\"#{@body_class}\"" if @body_class %>>
 <%= yield %>
 </body>
-
 </html>

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# HealthMe Landing - Modern Grid System Application
+# PSP Environment - Modern Grid System Application
 # Built with standard Sinatra routing patterns
 # Created by Pattaya Upara (everysundays@gmail.com)
 
@@ -8,7 +8,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'bundler/setup'
 
-class HealthMeLandingApp < Sinatra::Base
+class PSPEnvironmentApp < Sinatra::Base
   # Enable reloader in development
   configure :development do
     register Sinatra::Reloader
@@ -98,5 +98,5 @@ class HealthMeLandingApp < Sinatra::Base
 end
 
 # Start the application
-HealthMeLandingApp.run! if __FILE__ == $0
+PSPEnvironmentApp.run! if __FILE__ == $0
 

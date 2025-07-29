@@ -1,20 +1,20 @@
 /**
- * TWLayout Plugin v2.0.0
- * =======================
+ * PSP Layout Plugin v1.0.0
+ * ==========================
  * 
- * A modern Tailwind CSS plugin that provides a CSS Grid-based responsive system:
- * - Rack containers (CSS Grid with 12-column layout)
- * - Rail containers (Flexbox with fixed-width columns for horizontal scrolling)
- * - Responsive breakpoints with mobile-first approach
- * - Simplified span-based column system
+ * CSS Grid (Rack) + Flexbox (Rail) layout system for Tailwind CSS v4:
+ * - Rack containers: CSS Grid with span-based responsive columns
+ * - Rail containers: Flexbox with fixed-width columns for horizontal scrolling
+ * - Mobile-first responsive design with intelligent breakpoints
+ * - Traditional grid-column-start offset system
  * 
- * Breakpoints:
- * - sm: 0px - Mobile-first, col-1/2 = span 6 (50%), col-3+ = span 12 (100%)
- * - md: 768px - 7-column system, col-7+ = span 12 (100%)
- * - lg: 1024px - Standard 12-column grid system
- * - xl: 1280px - Standard 12-column grid system
+ * Responsive Behavior:
+ * - xs/sm (0-767px): col-1/2 = span 6 (50%), col-3+ = span 12 (100%)
+ * - md (768px+): 7-column proportional system, col-7+ = span 12 (100%)
+ * - lg+ (1024px+): Standard 12-column grid system
  * 
- * Compatible with Tailwind CSS v4.x
+ * Compatible with Tailwind CSS v4.1.11+
+ * Part of PSP-ENV v1.0.0
  */
 
 const plugin = require('tailwindcss/plugin');
@@ -37,6 +37,10 @@ function generateCSSVariables(breakpoint, config) {
     '--tw-layout-max-width': `${config.availableSpace}px`,
     '--tw-layout-breakpoint': breakpoint,
     
+    // Offset system variables
+    '--offset-base': 'calc(100% / var(--grid-columns))',  // One column width
+    '--offset-gap': 'var(--base-gap)',                    // Existing gap variable
+    
     // Rail gap variables
     '--tw-rail-gap-standard': RAIL_GAPS.STANDARD,
     '--tw-rail-gap-slide': RAIL_GAPS.SLIDE_MODE[breakpoint],
@@ -51,9 +55,9 @@ function generateCSSVariables(breakpoint, config) {
     vars[`--tw-rail-col-${col}`] = width;
   });
 
-  // Offset variables
-  Object.entries(OFFSETS[breakpoint]).forEach(([offset, marginLeft]) => {
-    vars[`--tw-offset-${offset}`] = marginLeft;
+  // Offset variables (systematic padding values)
+  Object.entries(OFFSETS[breakpoint]).forEach(([offset, paddingValue]) => {
+    vars[`--offset-${offset}-padding`] = paddingValue;
   });
 
   return vars;
@@ -141,6 +145,13 @@ function generateColumnClasses(breakpoint) {
     };
   });
   
+  // Offset classes (.offset-{n}) - Systematic padding-based centering
+  Object.entries(OFFSETS[breakpoint]).forEach(([offset, paddingValue]) => {
+    classes[`.offset-${offset}`] = {
+      paddingInline: `var(--offset-${offset}-padding)`,
+    };
+  });
+
   // Page wrapper max-width
   classes['.page-wrapper'] = {
     maxWidth: 'var(--tw-layout-max-width)',
@@ -245,9 +256,9 @@ module.exports = plugin(function({ addBase, addComponents, addUtilities, theme }
       },
     });
     
-    console.log('TWLayout Plugin v1.3.1: Successfully initialized');
+    console.log('PSP Layout Plugin v1.0.0: Successfully initialized');
     
   } catch (error) {
-    console.error('TWLayout Plugin: Initialization failed:', error);
+    console.error('PSP Layout Plugin: Initialization failed:', error);
   }
 }); 
