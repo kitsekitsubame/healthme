@@ -1,0 +1,320 @@
+@import "tailwindcss";
+
+@theme {
+  /* Grid System Variables */
+  --grid-columns: 12;
+  --base-gap: 1rem;
+  --container-padding: 1.5rem;
+  
+  /* Responsive Breakpoints (matching original system) */
+  --breakpoint-mobile: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1024px;
+  --breakpoint-xl: 1280px;
+  
+  /* Rail Column Fixed Widths */
+  --rail-col-1: 16rem;
+  --rail-col-2: 20rem;
+  --rail-col-3: 24rem;
+  --rail-col-4: 28rem;
+  --rail-col-5: 32rem;
+  --rail-col-6: 36rem;
+  --rail-col-7: 40rem;
+  --rail-col-8: 44rem;
+  --rail-col-9: 48rem;
+  --rail-col-10: 52rem;
+  --rail-col-11: 56rem;
+  --rail-col-12: 100%;
+}
+
+/* ================================
+   RACK SYSTEM (CSS Grid)
+   ================================ */
+
+@utility rack {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--base-gap);
+  width: 100%;
+  padding-inline: var(--container-padding);
+  box-sizing: border-box;
+}
+
+/* ================================
+   RAIL SYSTEM (Flexbox)
+   ================================ */
+
+@utility rail {
+  display: flex;
+  gap: var(--container-padding);  /* Use container padding as gap for rail */
+  overflow-x: auto;
+  width: 100%;
+  padding-inline: var(--container-padding);
+  flex-wrap: nowrap;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  
+  &::-webkit-scrollbar {
+    display: none; /* WebKit browsers */
+  }
+}
+
+/* Rail Standard Mode - smaller gap for tighter spacing */
+@utility rail-standard {
+  gap: var(--base-gap) !important;
+}
+
+/* Rail Slide Mode - default gap (container padding) for seamless slides */
+@utility rail-slide {
+  gap: var(--container-padding) !important;
+}
+
+/* ================================
+   COLUMN SYSTEM - MOBILE FIRST
+   ================================ */
+
+/* xs/sm: Mobile-first Tailwind grid spans (320px-767px) */
+.col-1 { grid-column: span 6; }
+.col-2 { grid-column: span 6; }
+.col-3 { grid-column: span 12; }
+.col-4 { grid-column: span 12; }
+.col-5 { grid-column: span 12; }
+.col-6 { grid-column: span 12; }
+.col-7 { grid-column: span 12; }
+.col-8 { grid-column: span 12; }
+.col-9 { grid-column: span 12; }
+.col-10 { grid-column: span 12; }
+.col-11 { grid-column: span 12; }
+.col-12 { grid-column: span 12; }
+
+/* ================================
+   RESPONSIVE BREAKPOINTS
+   ================================ */
+
+/* md: 7-Column System (768px+) */
+/* col-7+ = full width (span 12), col-1-6 proportional to 7-column system */
+@media (min-width: 768px) {
+  .col-1 { grid-column: span 2; }  /* 1/7 of 12 ≈ 1.71 → 2 */
+  .col-2 { grid-column: span 3; }  /* 2/7 of 12 ≈ 3.43 → 3 */
+  .col-3 { grid-column: span 5; }  /* 3/7 of 12 ≈ 5.14 → 5 */
+  .col-4 { grid-column: span 7; }  /* 4/7 of 12 ≈ 6.86 → 7 */
+  .col-5 { grid-column: span 9; }  /* 5/7 of 12 ≈ 8.57 → 9 */
+  .col-6 { grid-column: span 10; } /* 6/7 of 12 ≈ 10.29 → 10 */
+  .col-7 { grid-column: span 12; } /* Full width threshold */
+  .col-8 { grid-column: span 12; }
+  .col-9 { grid-column: span 12; }
+  .col-10 { grid-column: span 12; }
+  .col-11 { grid-column: span 12; }
+  .col-12 { grid-column: span 12; }
+}
+
+/* lg: Standard 12-Column Grid (1024px+) */
+@media (min-width: 1024px) {
+  .col-1 { grid-column: span 1; }
+  .col-2 { grid-column: span 2; }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
+  .col-6 { grid-column: span 6; }
+  .col-7 { grid-column: span 7; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-10 { grid-column: span 10; }
+  .col-11 { grid-column: span 11; }
+  .col-12 { grid-column: span 12; }
+}
+
+/* xl: Standard 12-Column Grid (1280px+) */
+@media (min-width: 1280px) {
+  .col-1 { grid-column: span 1; }
+  .col-2 { grid-column: span 2; }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
+  .col-6 { grid-column: span 6; }
+  .col-7 { grid-column: span 7; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-10 { grid-column: span 10; }
+  .col-11 { grid-column: span 11; }
+  .col-12 { grid-column: span 12; }
+}
+
+/* 2xl: Standard 12-Column Grid (1536px+) */
+@media (min-width: 1536px) {
+  .col-1 { grid-column: span 1; }
+  .col-2 { grid-column: span 2; }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-5 { grid-column: span 5; }
+  .col-6 { grid-column: span 6; }
+  .col-7 { grid-column: span 7; }
+  .col-8 { grid-column: span 8; }
+  .col-9 { grid-column: span 9; }
+  .col-10 { grid-column: span 10; }
+  .col-11 { grid-column: span 11; }
+  .col-12 { grid-column: span 12; }
+}
+
+/* ================================
+   RAIL COLUMN FIXED WIDTHS
+   ================================ */
+
+/* Rail columns maintain fixed widths across all breakpoints */
+.rail .col-1 {
+  width: var(--rail-col-1);
+  min-width: var(--rail-col-1);
+  flex-shrink: 0;
+}
+
+.rail .col-2 {
+  width: var(--rail-col-2);
+  min-width: var(--rail-col-2);
+  flex-shrink: 0;
+}
+
+.rail .col-3 {
+  width: var(--rail-col-3);
+  min-width: var(--rail-col-3);
+  flex-shrink: 0;
+}
+
+.rail .col-4 {
+  width: var(--rail-col-4);
+  min-width: var(--rail-col-4);
+  flex-shrink: 0;
+}
+
+.rail .col-5 {
+  width: var(--rail-col-5);
+  min-width: var(--rail-col-5);
+  flex-shrink: 0;
+}
+
+.rail .col-6 {
+  width: var(--rail-col-6);
+  min-width: var(--rail-col-6);
+  flex-shrink: 0;
+}
+
+.rail .col-7 {
+  width: var(--rail-col-7);
+  min-width: var(--rail-col-7);
+  flex-shrink: 0;
+}
+
+.rail .col-8 {
+  width: var(--rail-col-8);
+  min-width: var(--rail-col-8);
+  flex-shrink: 0;
+}
+
+.rail .col-9 {
+  width: var(--rail-col-9);
+  min-width: var(--rail-col-9);
+  flex-shrink: 0;
+}
+
+.rail .col-10 {
+  width: var(--rail-col-10);
+  min-width: var(--rail-col-10);
+  flex-shrink: 0;
+}
+
+.rail .col-11 {
+  width: var(--rail-col-11);
+  min-width: var(--rail-col-11);
+  flex-shrink: 0;
+}
+
+.rail .col-12 {
+  width: var(--rail-col-12);
+  min-width: var(--rail-col-12);
+  flex-shrink: 0;
+}
+
+/* ================================
+   PERFECT CENTERING SYSTEM
+   ================================ */
+
+/* Grid-based centering: start position + span */
+/* Grid-based offset system using grid-column-start */
+@utility offset-1 { grid-column-start: 2; } /* Start at column 2 (skip 1) */
+@utility offset-2 { grid-column-start: 3; } /* Start at column 3 (skip 2) */
+@utility offset-3 { grid-column-start: 4; } /* Start at column 4 (skip 3) */
+@utility offset-4 { grid-column-start: 5; } /* Start at column 5 (skip 4) */
+@utility offset-5 { grid-column-start: 6; } /* Start at column 6 (skip 5) */
+@utility offset-6 { grid-column-start: 7; } /* Start at column 7 (skip 6) */
+@utility offset-7 { grid-column-start: 8; } /* Start at column 8 (skip 7) */
+@utility offset-8 { grid-column-start: 9; } /* Start at column 9 (skip 8) */
+@utility offset-9 { grid-column-start: 10; } /* Start at column 10 (skip 9) */
+@utility offset-10 { grid-column-start: 11; } /* Start at column 11 (skip 10) */
+@utility offset-11 { grid-column-start: 12; } /* Start at column 12 (skip 11) */
+
+/* Legacy offset-center classes for backward compatibility */
+@utility offset-center-1 { grid-column: 6 / span 1; } /* Column 6, span 1 */
+@utility offset-center-2 { grid-column: 6 / span 2; } /* Column 6, span 2 */
+@utility offset-center-3 { grid-column: 5 / span 3; } /* Column 5, span 3 */
+@utility offset-center-4 { grid-column: 5 / span 4; } /* Column 5, span 4 */
+@utility offset-center-5 { grid-column: 4 / span 5; } /* Column 4, span 5 */
+@utility offset-center-6 { grid-column: 4 / span 6; } /* Column 4, span 6 */
+@utility offset-center-7 { grid-column: 3 / span 7; } /* Column 3, span 7 */
+@utility offset-center-8 { grid-column: 3 / span 8; } /* Column 3, span 8 */
+@utility offset-center-9 { grid-column: 2 / span 9; } /* Column 2, span 9 */
+@utility offset-center-10 { grid-column: 2 / span 10; } /* Column 2, span 10 */
+@utility offset-center-11 { grid-column: 1 / span 11; } /* Column 1, span 11 */
+
+/* ================================
+   RAIL GAP UTILITIES
+   ================================ */
+
+@utility rail-standard {
+  gap: var(--base-gap) !important;
+}
+
+@utility rail-slide {
+  gap: var(--container-padding) !important;
+}
+
+/* ================================
+   LAYOUT PRESETS
+   ================================ */
+
+@utility hero-layout {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--base-gap);
+  width: 100%;
+  padding-inline: var(--container-padding);
+  box-sizing: border-box;
+  min-height: 80vh;
+  align-items: center;
+}
+
+@utility card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: var(--base-gap);
+  width: 100%;
+  padding-inline: var(--container-padding);
+  box-sizing: border-box;
+}
+
+/* ================================
+   DEBUG MODE (Optional)
+   ================================ */
+
+@utility debug-grid {
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent calc(100% / 12 - 1px),
+      rgba(255, 0, 0, 0.1) calc(100% / 12)
+    );
+}
+
+.my-blue-h2 {
+    @apply bg-yellow-50;
+    @apply text-blue-600;
+}

@@ -1,0 +1,72 @@
+{
+  "plugins": {
+    "psp-layout": {
+      "name": "PSP Layout",
+      "version": "2.0.0",
+      "description": "Advanced CSS Grid and Flexbox layout system for modern web development",
+      "type": "layout-system",
+      "path": "./psp-layout",
+      "main": "scripts/twlayout-plugin.js",
+      "styles": "styles/layout.css",
+      "demo": {
+        "css": "demo/demo.css",
+        "js": "demo/demo.js"
+      },
+      "author": "Pattaya Upara <everysundays@gmail.com>",
+      "status": "active",
+      "dependencies": {
+        "tailwindcss": "^4.0.0"
+      },
+      "features": [
+        "CSS Grid (Rack) containers",
+        "Flexbox (Rail) containers", 
+        "Mobile-first responsive design",
+        "Perfect centering system",
+        "12-column grid system"
+      ],
+      "compatibility": {
+        "browsers": ["Chrome >= 57", "Firefox >= 52", "Safari >= 12", "Edge >= 16"],
+        "frameworks": ["Tailwind CSS v4+", "Vanilla CSS", "Any CSS framework"]
+      }
+    },
+    "psp-debug": {
+      "name": "PSP Debug",  
+      "version": "1.0.0",
+      "description": "Visual debugging plugin with element inspection and viewport controls",
+      "type": "debug-tools",
+      "path": "./psp-debug",
+      "main": "scripts/debug-mode.js",
+      "styles": "styles/debug-mode.css",
+      "author": "Pattaya Upara <everysundays@gmail.com>",
+      "status": "active",
+      "dependencies": {},
+      "features": [
+        "Real-time element inspector",
+        "Viewport controls and breakpoint indicators", 
+        "Visual debugging aids",
+        "Smart tooltip positioning",
+        "Persistent debug state"
+      ],
+      "compatibility": {
+        "browsers": ["Chrome >= 60", "Firefox >= 55", "Safari >= 12", "Edge >= 79"],
+        "frameworks": ["Any HTML/CSS/JS project"]
+      }
+    }
+  },
+  "meta": {
+    "version": "1.0.0",
+    "created": "2025-07-25",
+    "author": "Pattaya Upara <everysundays@gmail.com>",
+    "description": "Plugin manifest for PSP (Pattaya Studio Project) ecosystem",
+    "namespace": "psp",
+    "conventions": {
+      "naming": "psp-{plugin-name}",
+      "structure": {
+        "required": ["package.json", "README.md"],
+        "optional": ["scripts/", "styles/", "demo/", "doc/", "tests/"]
+      },
+      "versioning": "semantic versioning (semver)",
+      "licensing": "MIT License preferred"
+    }
+  }
+}

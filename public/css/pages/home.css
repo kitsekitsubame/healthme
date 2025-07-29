@@ -1,0 +1,93 @@
+/* Home Page Decorations - Removable Styling */
+/* This file contains all decorative elements that can be easily disabled */
+
+/* Minimal pastel color palette */
+:root {
+  --pastel-mint: #f0fbf4;
+  --pastel-sage: #e8f5e8;
+  --pastel-stone: #f7f6f4;
+  --pastel-cloud: #f8f9fb;
+  --soft-gray: #6b7280;
+  --warm-white: #fefefe;
+}
+
+/* Navigation subtle styling */
+.nav-menu {
+  background: var(--pastel-cloud);
+  border-bottom: 1px solid #e8eaed;
+}
+
+.nav-link {
+  color: var(--soft-gray);
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #374151;
+}
+
+.nav-link.current {
+  color: #1f2937;
+  font-weight: 500;
+}
+
+/* Hero section minimal styling */
+.hero-section {
+  background: var(--pastel-stone);
+  border-radius: 6px;
+}
+
+/* Card subtle enhancements */
+.tool-card {
+  background: var(--warm-white);
+  border: 1px solid #f1f3f4;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+}
+
+.tool-card:hover {
+  border-color: #e8eaed;
+}
+
+/* Status badges minimal styling */
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.status-integrated { 
+  background: var(--pastel-mint); 
+  color: #0f5132; 
+}
+
+.status-configured { 
+  background: #e7f3ff; 
+  color: #0c4a6e; 
+}
+
+.status-active { 
+  background: #fef7ed; 
+  color: #9a3412; 
+}
+
+/* Code block subtle styling */
+.code-block {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+}
+
+/* Architecture cards */
+.arch-card {
+  background: var(--pastel-sage);
+  border-radius: 6px;
+}
+
+/* Grid utility for feature layout */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}

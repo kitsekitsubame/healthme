@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthMe Landing - Modern Grid System Environment</title>
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/pages/home.css" rel="stylesheet">
+  <!-- To disable decorations, comment out the line above -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav-menu py-4 mb-8">
+  <div class="container mx-auto">
+    <div class="flex gap-8 items-center">
+      <a href="/" class="nav-link current flex items-center gap-2">
+        <span class="material-icons text-lg">home</span>
+        Home
+      </a>
+      <a href="/demo" class="nav-link flex items-center gap-2">
+        <span class="material-icons text-lg">grid_view</span>
+        Grid Demo
+      </a>
+      <a href="/api/grid-info" class="nav-link flex items-center gap-2">
+        <span class="material-icons text-lg">api</span>
+        API Info
+      </a>
+      <a href="https://github.com/tailwindlabs/tailwindcss" class="nav-link flex items-center gap-2" target="_blank">
+        <span class="material-icons text-lg">description</span>
+        Tailwind Docs
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero-section py-12 mb-12 text-center">
+  <div class="container mx-auto">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-gray-900">HealthMe Landing</h1>
+    <p class="text-lg md:text-xl text-gray-700 mb-6">Modern Grid System Development Environment</p>
+    <p class="text-sm md:text-base text-gray-600">Built with TDD methodology • Tailwind v4 CSS-first • Ruby/Sinatra backend</p>
+  </div>
+</div>
+
+<div class="container mx-auto">
+  
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-6">Architecture Overview</h2>
+    <p class="text-gray-600 mb-8 text-sm">This environment combines modern web development tools with a custom grid system implementation using TDD methodology.</p>
+    
+    <div class="rack">
+      <div class="col-6">
+        <div class="arch-card p-6 h-full">
+          <h3 class="text-lg font-semibold mb-4">Frontend Stack</h3>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li><strong>Tailwind v4:</strong> Utility-first CSS with custom utilities</li>
+            <li><strong>CSS Grid/Flexbox:</strong> Modern layout primitives</li>
+            <li><strong>Vanilla JavaScript:</strong> No framework dependencies</li>
+            <li><strong>ERB Templates:</strong> Server-side rendering</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="col-6">
+        <div class="arch-card p-6 h-full">
+          <h3 class="text-lg font-semibold mb-4">Backend & Tooling</h3>
+          <ul class="space-y-2 text-gray-700 text-sm">
+            <li><strong>Ruby/Sinatra:</strong> Lightweight web framework</li>
+            <li><strong>Jest:</strong> Testing framework with jsdom</li>
+            <li><strong>npm Scripts:</strong> Build automation</li>
+            <li><strong>TDD Workflow:</strong> Test-driven development</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-6">Frameworks & Tools</h2>
+    
+    <div class="rack">
+      
+      <div class="col-6 tool-card p-6">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-lg font-semibold">Tailwind CSS v4</h3>
+          <span class="status-badge status-integrated">Integrated</span>
+        </div>
+        <p class="text-gray-600 mb-3 text-sm">Modern utility-first CSS framework with CSS-first configuration approach.</p>
+        <ul class="text-xs text-gray-500 space-y-1">
+          <li>CSS-first configuration using @theme and @utility</li>
+          <li>Custom grid system utilities (rack/rail)</li>
+          <li>No tailwind.config.js required</li>
+          <li>Build process: <code class="bg-gray-100 px-1 rounded">npm run build:css</code></li>
+        </ul>
+      </div>
+
+      <div class="col-6 tool-card p-6">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-lg font-semibold">Ruby/Sinatra Backend</h3>
+          <span class="status-badge status-active">Active</span>
+        </div>
+        <p class="text-gray-600 mb-3 text-sm">Lightweight web application framework for serving pages and API endpoints.</p>
+        <ul class="text-xs text-gray-500 space-y-1">
+          <li>ERB template rendering</li>
+          <li>RESTful API endpoints</li>
+          <li>Development server with auto-reload</li>
+          <li>Start server: <code class="bg-gray-100 px-1 rounded">npm run dev</code></li>
+        </ul>
+      </div>
+
+      <div class="col-6 tool-card p-6">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-lg font-semibold">Jest Testing Framework</h3>
+          <span class="status-badge status-configured">Configured</span>
+        </div>
+        <p class="text-gray-600 mb-3 text-sm">Comprehensive test suite for grid system with 47 passing tests.</p>
+        <ul class="text-xs text-gray-500 space-y-1">
+          <li>TDD implementation approach</li>
+          <li>jsdom environment for CSS testing</li>
+          <li>Responsive behavior validation</li>
+          <li>Run tests: <code class="bg-gray-100 px-1 rounded">npm test</code></li>
+        </ul>
+      </div>
+
+      <div class="col-6 tool-card p-6">
+        <div class="flex justify-between items-start mb-3">
+          <h3 class="text-lg font-semibold">Modern Grid System</h3>
+          <span class="status-badge status-integrated">Custom Built</span>
+        </div>
+        <p class="text-gray-600 mb-3 text-sm">CSS Grid (Rack) and Flexbox (Rail) based layout system with mobile-first design.</p>
+        <ul class="text-xs text-gray-500 space-y-1">
+          <li>12-column responsive grid system</li>
+          <li>Perfect centering utilities</li>
+          <li>Mobile-first breakpoints</li>
+          <li><a href="/demo" class="text-blue-600 hover:text-blue-800">View interactive demo →</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="text-2xl font-semibold mb-6">Getting Started</h2>
+    
+    <div class="code-block p-6 mb-6">
+      <h4 class="text-base font-semibold mb-4">Quick Start Commands</h4>
+      <div class="space-y-2 font-mono text-sm text-gray-700">
+        <div><span class="text-green-600">$</span> npm install</div>
+        <div><span class="text-green-600">$</span> npm run build:css</div>
+        <div><span class="text-green-600">$</span> npm test</div>
+        <div><span class="text-green-600">$</span> npm run dev</div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
