@@ -1,4 +1,4 @@
-# TWLayout Development Guidelines v1.2.0
+# PSP Layout Plugin Development Guidelines v1.0.0
 
 ## Table of Contents
 1. [Project Architecture](#project-architecture)
@@ -22,9 +22,10 @@ project-root/
 │   │   └── main.css             # Main stylesheet entry point
 │   ├── img/                     # Images and assets
 │   └── *.html                   # HTML pages
-├── twlayout-plugin/             # Grid system plugin
-│   ├── scripts/                 # Plugin logic
-│   └── styles/                  # Plugin stylesheets
+├── plugins/
+│   └── psp-layout/              # Grid system plugin
+│       ├── scripts/             # Plugin logic & debug tools
+│       └── styles/              # Plugin stylesheets & debug UI
 ├── dist/                        # Compiled CSS output
 ├── tests/                       # Test files
 │   ├── integration/
@@ -32,14 +33,18 @@ project-root/
 └── docs/                        # Documentation
 ```
 
-### CSS Import Order
+### CSS Import Order (Tailwind v4)
 ```css
 /* 1. Tailwind CSS base */
 @import "tailwindcss";
-@config "../../tailwind.config.__";
+@import "../../plugins/psp-layout/styles/debug-mode.css";
 
-/* 2. Typography presets (optional) */
-/* Typography classes h1-b3 are defined in main.css */
+/* 2. Theme configuration */
+@theme {
+  --grid-columns: 12;
+  --base-gap: 1rem;
+  --container-padding: 1.5rem;
+}
 
 /* 3. Project-specific styles */
 /* Your custom CSS here */
@@ -613,23 +618,25 @@ npm run build
 ### Debug Mode
 ```html
 <!-- Enable debug mode to visualize grid -->
-<script type="module" src="../twlayout-plugin/scripts/debug-mode.js"></script>
+<script src="/plugins/psp-layout/scripts/debug-mode.js"></script>
+
+<!-- Or conditionally in Ruby/Sinatra -->
+<% if @body_class == "debug" %>
+  <script src="/plugins/psp-layout/scripts/debug-mode.js"></script>
+<% end %>
 ```
 
 ---
 
 ## Version History
 
-### v1.2.0 (Current)
-- Refactored plugin architecture
-- Added comprehensive typography system
-- Improved Tailwind v4 compatibility
-- Enhanced documentation and guidelines
-
-### v1.1.0
-- Initial grid system implementation
-- Basic typography classes
-- Debug mode functionality
+### v1.0.0 (Current)
+- CSS Grid (Rack) + Flexbox (Rail) layout system
+- Traditional grid-column-start offset positioning
+- Tailwind CSS v4 integration with @theme and @utility syntax
+- 60 passing tests with TDD methodology
+- Integrated debug functionality within plugin
+- Mobile-first responsive design with intelligent breakpoints
 
 ---
 

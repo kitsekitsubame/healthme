@@ -2,54 +2,28 @@
   "plugins": {
     "psp-layout": {
       "name": "PSP Layout",
-      "version": "2.0.0",
-      "description": "Advanced CSS Grid and Flexbox layout system for modern web development",
+      "version": "1.0.0",
+      "description": "CSS Grid (Rack) + Flexbox (Rail) layout system with Tailwind CSS v4 integration",
       "type": "layout-system",
       "path": "./psp-layout",
       "main": "scripts/twlayout-plugin.js",
-      "styles": "styles/layout.css",
-      "demo": {
-        "css": "demo/demo.css",
-        "js": "demo/demo.js"
-      },
-      "author": "Pattaya Upara <everysundays@gmail.com>",
-      "status": "active",
-      "dependencies": {
-        "tailwindcss": "^4.0.0"
-      },
-      "features": [
-        "CSS Grid (Rack) containers",
-        "Flexbox (Rail) containers", 
-        "Mobile-first responsive design",
-        "Perfect centering system",
-        "12-column grid system"
-      ],
-      "compatibility": {
-        "browsers": ["Chrome >= 57", "Firefox >= 52", "Safari >= 12", "Edge >= 16"],
-        "frameworks": ["Tailwind CSS v4+", "Vanilla CSS", "Any CSS framework"]
-      }
-    },
-    "psp-debug": {
-      "name": "PSP Debug",  
-      "version": "1.0.0",
-      "description": "Visual debugging plugin with element inspection and viewport controls",
-      "type": "debug-tools",
-      "path": "./psp-debug",
-      "main": "scripts/debug-mode.js",
       "styles": "styles/debug-mode.css",
       "author": "Pattaya Upara <everysundays@gmail.com>",
       "status": "active",
-      "dependencies": {},
+      "dependencies": {
+        "tailwindcss": "^4.1.11"
+      },
       "features": [
-        "Real-time element inspector",
-        "Viewport controls and breakpoint indicators", 
-        "Visual debugging aids",
-        "Smart tooltip positioning",
-        "Persistent debug state"
+        "CSS Grid (Rack) containers with span-based responsive columns",
+        "Flexbox (Rail) containers with fixed-width horizontal scrolling", 
+        "Mobile-first responsive design with intelligent breakpoints",
+        "Traditional grid-column-start offset system",
+        "60 passing tests with TDD methodology",
+        "Integrated debug functionality"
       ],
       "compatibility": {
         "browsers": ["Chrome >= 60", "Firefox >= 55", "Safari >= 12", "Edge >= 79"],
-        "frameworks": ["Any HTML/CSS/JS project"]
+        "frameworks": ["Tailwind CSS v4.1.11+", "Ruby/Sinatra", "Modern web frameworks"]
       }
     }
   },

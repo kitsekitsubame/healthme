@@ -22,7 +22,7 @@ The PSP Layout Plugin is designed for:
 - **Rack System**: CSS Grid with 12-column responsive behavior
 - **Rail System**: Flexbox with fixed-width columns and horizontal scrolling
 - **Mobile-First Design**: col-1/2 = 50%, col-3+ = 100% on mobile
-- **Perfect Centering**: offset-* utilities for systematic positioning
+- **Grid Positioning**: offset-* utilities using grid-column-start for precise positioning
 
 ### Visual Debugging Tools
 - **Debug Mode Toggle**: Enable/disable visual debugging
@@ -34,7 +34,7 @@ The PSP Layout Plugin is designed for:
 ### Technical Implementation
 - **Tailwind v4 Compatible**: Uses modern @theme and @utility syntax
 - **CSS Custom Properties**: Configurable gaps, padding, and column widths
-- **Test-Driven Development**: 47 passing Jest tests for reliability
+- **Test-Driven Development**: 60 passing Jest tests for reliability
 - **Cross-Browser Support**: Modern browser compatibility with graceful degradation
 
 ## Installation
@@ -112,15 +112,15 @@ module.exports = {
 </div>
 ```
 
-### Perfect Centering with Offsets
+### Grid Positioning with Offsets
 ```html
 <div class="rack">
-  <div class="offset-2 col-8">Centered content with 2-column padding</div>
+  <div class="offset-2 col-8">Content starts at column 3, spans 8 columns</div>
 </div>
 
 <div class="rack">
-  <div class="offset-1 col-3">Left element</div>
-  <div class="col-8">Right element (11 total columns, centered)</div>
+  <div class="offset-1 col-3">Left element (starts at column 2, spans 3)</div>
+  <div class="col-8">Right element (spans 8 columns normally)</div>
 </div>
 ```
 
@@ -194,7 +194,7 @@ npm run test:coverage
 ```
 
 ### Test Coverage
-- **47 passing tests** covering all grid functionality
+- **60 passing tests** covering all grid functionality (100% pass rate)
 - **4 test files**: rack-system, rail-system, responsive-behavior, offset-system
 - **jsdom environment** for CSS testing
 - **TDD implementation** ensuring reliability
@@ -246,13 +246,14 @@ Replace PSP Layout classes with standard alternatives:
 The system uses mathematical precision for column calculations:
 
 - **Mobile**: Mobile-first responsive behavior with 2-column maximum
-- **Tablet**: 7-column harmonic system with perfect proportions
+- **Tablet**: 7-column proportional system where col-7+ = full width
 - **Desktop**: Standard 12-column grid with full flexibility
 
 ### Offset System
-Systematic pseudo-centering using the formula:
-```
-offset-n padding = (n × column-width + n × gutter-width) ÷ 2
+Traditional CSS Grid positioning using grid-column-start:
+```css
+.offset-1 { grid-column-start: 2; } /* Start at column 2 (skip 1) */
+.offset-2 { grid-column-start: 3; } /* Start at column 3 (skip 2) */
 ```
 
 ### Debug Implementation

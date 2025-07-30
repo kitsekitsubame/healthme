@@ -13,57 +13,47 @@ The PSP (Pattaya Studio Project) plugins directory provides a standardized, orga
 plugins/
 ├── manifest.json          # Plugin registry and metadata
 ├── README.md              # This documentation
-├── psp-layout/            # CSS Grid/Flexbox layout system
-│   ├── package.json       # Plugin configuration
-│   ├── README.md          # Plugin documentation
-│   ├── scripts/           # JavaScript functionality
-│   ├── styles/            # CSS implementations
-│   ├── demo/              # Demo files and examples
-│   └── doc/               # Technical documentation
-└── psp-debug/             # Visual debugging tools
-    ├── package.json       # Plugin configuration  
-    ├── README.md          # Plugin documentation
-    ├── scripts/           # Debug functionality
-    └── styles/            # Debug UI styles
+└── psp-layout/            # CSS Grid/Flexbox layout system
+    ├── package.json       # Plugin configuration
+    ├── manual.md          # Plugin documentation and usage guide
+    ├── scripts/           # JavaScript functionality & debug tools
+    │   ├── twlayout-plugin.js
+    │   ├── grid-config.js
+    │   └── debug-mode.js
+    ├── styles/            # CSS implementations & debug UI
+    │   └── debug-mode.css
+    └── doc/               # Technical documentation
+        ├── grid-configuration.md
+        ├── offset-system.md
+        ├── development-guidelines.md
+        └── CSS_GRID_SYSTEM.md
 ```
 
 ## Available Plugins
 
 ### 🎨 PSP Layout (psp-layout)
-**Advanced CSS Grid and Flexbox Layout System**
+**CSS Grid (Rack) + Flexbox (Rail) Layout System**
 
-- **Version**: 2.0.0
+- **Version**: 1.0.0
 - **Type**: Layout System
 - **Features**:
-  - CSS Grid (Rack) containers with 12-column system
-  - Flexbox (Rail) containers with fixed widths
-  - Mobile-first responsive design
-  - Perfect centering utilities
-  - TDD-tested implementation
+  - CSS Grid (Rack) containers with span-based responsive columns
+  - Flexbox (Rail) containers with fixed-width horizontal scrolling
+  - Mobile-first responsive design with intelligent breakpoints
+  - Traditional grid-column-start offset system
+  - 60 passing tests with TDD methodology
 
 **Usage**:
 ```html
-<link href="/plugins/psp-layout/demo/demo.css" rel="stylesheet">
-<script src="/plugins/psp-layout/demo/demo.js"></script>
+<!-- CSS Integration (Tailwind v4) -->
+@import "tailwindcss";
+@import "../../plugins/psp-layout/styles/debug-mode.css";
+
+<!-- JavaScript Integration (optional debug functionality) -->
+<script src="/plugins/psp-layout/scripts/debug-mode.js"></script>
 ```
 
-### 🔍 PSP Debug (psp-debug)
-**Visual Debugging and Inspection Tools**
-
-- **Version**: 1.0.0  
-- **Type**: Debug Tools
-- **Features**:
-  - Real-time element inspector
-  - Viewport controls and breakpoint indicators
-  - Smart tooltip positioning
-  - Persistent debug state
-  - Non-intrusive UI integration
-
-**Usage**:
-```html
-<link href="/plugins/psp-debug/styles/debug-mode.css" rel="stylesheet">
-<script src="/plugins/psp-debug/scripts/debug-mode.js"></script>
-```
+**Note**: Debug functionality is integrated within psp-layout plugin, not a separate plugin.
 
 ## Plugin Standards
 
@@ -104,8 +94,8 @@ The `manifest.json` file serves as a central registry:
   "plugins": {
     "psp-layout": {
       "name": "PSP Layout",
-      "version": "2.0.0",
-      "description": "Advanced CSS Grid and Flexbox layout system",
+      "version": "1.0.0",
+      "description": "CSS Grid (Rack) + Flexbox (Rail) layout system with Tailwind CSS v4 integration",
       "type": "layout-system",
       "status": "active",
       "author": "Pattaya Upara <everysundays@gmail.com>"
@@ -116,33 +106,34 @@ The `manifest.json` file serves as a central registry:
 
 ## Integration Patterns
 
-### Single Plugin Integration
-```html
-<!-- For specific functionality -->
-<link href="/plugins/psp-layout/demo/demo.css" rel="stylesheet">
-<script src="/plugins/psp-layout/demo/demo.js"></script>
+### Tailwind CSS v4 Integration
+```css
+/* In your main CSS file (e.g., tailwind.css) */
+@import "tailwindcss";
+@import "../../plugins/psp-layout/styles/debug-mode.css";
+
+@theme {
+  --grid-columns: 12;
+  --base-gap: 1rem;
+  --container-padding: 1.5rem;
+}
 ```
 
-### Multiple Plugin Integration  
+### HTML Integration
 ```html
-<!-- Layout system -->
-<link href="/plugins/psp-layout/demo/demo.css" rel="stylesheet">
-
-<!-- Debug tools (development only) -->
-<link href="/plugins/psp-debug/styles/debug-mode.css" rel="stylesheet">
-
-<!-- Scripts -->
-<script src="/plugins/psp-layout/demo/demo.js"></script>
-<script src="/plugins/psp-debug/scripts/debug-mode.js"></script>
-```
-
-### Conditional Loading
-```html
-<!-- Debug tools only in development -->
-<% if development? %>
-  <link href="/plugins/psp-debug/styles/debug-mode.css" rel="stylesheet">
-  <script src="/plugins/psp-debug/scripts/debug-mode.js"></script>
+<!-- Include debug functionality (optional, development only) -->
+<% if @body_class == "debug" %>
+  <script src="/plugins/psp-layout/scripts/debug-mode.js"></script>
 <% end %>
+```
+
+### Ruby/Sinatra Integration
+```ruby
+# In your application file
+get '/demo' do
+  @body_class = "debug"  # Enable debug mode for demo
+  erb :demo
+end
 ```
 
 ## Plugin Development Guidelines
