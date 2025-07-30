@@ -50,9 +50,9 @@ section {
   font-size: 0.875rem;
 }
 
-/* Column styling controlled by body.debug class */
-body.debug .rack > [class*="col-"],
-body.debug .rail > [class*="col-"] {
+/* Column styling for all modes (not just debug) */
+.rack > [class*="col-"],
+.rail > [class*="col-"] {
   border-radius: 0.25rem;
   box-sizing: border-box;
   position: relative;
@@ -67,17 +67,17 @@ body.debug .rail > [class*="col-"] {
   padding: 0.625rem;
 }
 
-/* Rack columns (purple theme) */
-body.debug .rack > [class*="col-"] {
+/* Rack columns (purple theme) - visible in all modes */
+.rack > [class*="col-"] {
   background-color: #f3e8ff;
   border: 1px solid #d8b4fe;
 }
 
-body.debug .rack > [class*="col-"] > strong {
+.rack > [class*="col-"] > strong {
   color: #6b21a8;
 }
 
-body.debug .rack > [class*="col-"] .measurement-info {
+.rack > [class*="col-"] .measurement-info {
   font-family: monospace;
   font-size: 0.75rem;
   color: #6b21a8;
@@ -87,17 +87,17 @@ body.debug .rack > [class*="col-"] .measurement-info {
   margin-top: 0.5rem;
 }
 
-/* Rail columns (blue theme) */
-body.debug .rail > [class*="col-"] {
+/* Rail columns (blue theme) - visible in all modes */
+.rail > [class*="col-"] {
   background-color: #dbeafe;
   border: 1px solid #60a5fa;
 }
 
-body.debug .rail > [class*="col-"] > strong {
+.rail > [class*="col-"] > strong {
   color: #1e40af;
 }
 
-body.debug .rail > [class*="col-"] .measurement-info {
+.rail > [class*="col-"] .measurement-info {
   font-family: monospace;
   font-size: 0.75rem;
   color: #1e40af;
@@ -107,17 +107,17 @@ body.debug .rail > [class*="col-"] .measurement-info {
   margin-top: 0.5rem;
 }
 
-/* Special styling for offset demo section */
-body.debug .offset-demo .rack > [class*="col-"] {
+/* Special styling for offset demo section - visible in all modes */
+.offset-demo .rack > [class*="col-"] {
   background-color: #dcfce7;
   border-color: #86efac;
 }
 
-body.debug .offset-demo .rack > [class*="col-"] > strong {
+.offset-demo .rack > [class*="col-"] > strong {
   color: #065f46;
 }
 
-body.debug .offset-demo .rack > [class*="col-"] .measurement-info {
+.offset-demo .rack > [class*="col-"] .measurement-info {
   color: #065f46;
 }
 
